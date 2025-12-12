@@ -1,0 +1,439 @@
+/* --- 1. CONFIGURATION & VARIABLES --- */
+:root {
+    --bg-dark: #050505;
+    --text-light: #ffffff;
+    --text-gray: #a0a0a0;
+    --gold: #c5a059;
+    --gold-gradient: linear-gradient(45deg, #c5a059, #f2d088);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --font-head: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Hides default cursor for our custom one */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- 2. FUTURISTIC CURSOR --- */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--gold);
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold);
+    position: fixed;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    transition: width 0.2s, height 0.2s;
+}
+
+/* Hover state for links */
+body:has(a:hover) .cursor-outline,
+body:has(button:hover) .cursor-outline {
+    width: 60px;
+    height: 60px;
+    background: rgba(197, 160, 89, 0.1);
+    border-color: transparent;
+}
+
+/* --- 3. AMBIENT GLOWS (Fills Empty Space) --- */
+.ambient-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.4;
+    animation: floatGlow 10s infinite alternate;
+}
+
+.glow-1 {
+    width: 500px; height: 500px;
+    background: #1a2a40; /* Deep Royal Blue */
+    top: -100px; left: -100px;
+}
+
+.glow-2 {
+    width: 400px; height: 400px;
+    background: #4a3b20; /* Dark Gold */
+    bottom: 0; right: 0;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* --- 4. NAVIGATION (GLASS) --- */
+.glass-nav {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 20px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(5, 5, 5, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+.logo {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.gold-text { color: var(--gold); font-style: italic; }
+
+.nav-links { display: flex; list-style: none; gap: 40px; }
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.btn-glow {
+    background: var(--gold-gradient);
+    border: none;
+    padding: 10px 25px;
+    color: #000;
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+    transition: 0.3s;
+}
+.btn-glow:hover {
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.8);
+    transform: scale(1.05);
+}
+
+.hamburger { display: none; font-size: 1.5rem; }
+
+/* --- 5. HERO SECTION --- */
+#hero {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.4;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    text-align: center;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.gradient-text {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Search Glass */
+.search-glass {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 40px;
+    border: 1px solid var(--glass-border);
+}
+
+.input-group {
+    flex: 1;
+    display: flex; align-items: center;
+    padding: 0 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.input-group i { color: var(--gold); margin-right: 10px; }
+.input-group input, .input-group select {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    outline: none;
+}
+.input-group select option { background: #000; }
+
+.btn-search {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gold);
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* --- 6. SECTIONS & CARDS --- */
+.section-padding { padding: 100px 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-family: var(--font-head);
+}
+
+/* 3D Tilt Cards */
+.services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tilt-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.icon-box {
+    font-size: 2rem; color: var(--gold);
+    margin-bottom: 20px;
+    transform: translateZ(20px);
+}
+
+.tilt-card h3 { transform: translateZ(30px); margin-bottom: 10px; font-size: 1.5rem; font-family: var(--font-head); }
+.tilt-card p { transform: translateZ(20px); color: var(--text-gray); }
+
+/* --- 7. FOUNDER SECTION --- */
+.founder-section { background: linear-gradient(to right, #050505 50%, #0a0a0a 50%); padding: 100px 0; }
+.split-layout { display: flex; align-items: center; gap: 60px; }
+.founder-info { flex: 1; }
+
+.founder-info h2 { font-size: 3.5rem; font-family: var(--font-head); line-height: 1.2; margin-bottom: 20px; }
+.subtitle { color: var(--gold); letter-spacing: 3px; font-size: 0.9rem; display: block; margin-bottom: 10px; }
+.stats-row { display: flex; gap: 50px; margin: 30px 0; }
+.stat h3 { font-size: 2.5rem; color: var(--gold); }
+
+.founder-visual { flex: 1; position: relative; }
+.image-frame {
+    position: relative;
+    border: 1px solid var(--gold);
+    padding: 20px;
+}
+.founder-img { width: 100%; display: block; filter: grayscale(100%); transition: 0.5s; }
+.founder-img:hover { filter: grayscale(0%); }
+
+.floating-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); color: #000;
+    padding: 15px 25px; font-weight: 700;
+}
+
+/* --- 8. CALCULATOR --- */
+.calc-section { position: relative; }
+.glass-calc {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 30px; }
+.range-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 5px;
+    background: #333;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.val-display { float: right; color: var(--gold); font-weight: bold; }
+
+.calc-result { display: flex; align-items: center; justify-content: center; }
+.circle-result {
+    width: 200px; height: 200px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
+}
+.circle-result h3 { font-size: 2rem; color: var(--text-light); }
+
+/* --- 9. FOOTER --- */
+.glass-footer {
+    border-top: 1px solid var(--glass-border);
+    margin-top: 100px;
+    padding: 50px 0;
+    background: #020202;
+}
+.footer-content { display: flex; justify-content: space-between; align-items: center; }
+.footer-social a { color: #fff; margin-left: 20px; font-size: 1.2rem; transition: 0.3s; }
+.footer-social a:hover { color: var(--gold); }
+.copyright { text-align: center; margin-top: 30px; color: var(--text-gray); font-size: 0.8rem; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links { display: none; }
+    .search-glass { flex-direction: column; }
+    .input-group { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+    .split-layout, .calc-grid { flex-direction: column; }
+    .founder-section { background: var(--bg-dark); }
+}/* --- 10. MOBILE RESPONSIVENESS (Add to bottom of style.css) --- */
+
+/* Tablet & Mobile Screens (Below 1024px) */
+@media screen and (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    h1 { font-size: 3rem; }
+    
+    /* Founder Section Stack */
+    .split-layout { flex-direction: column; gap: 40px; }
+    .founder-info { text-align: center; }
+    .stats-row { justify-content: center; }
+    .founder-visual { width: 100%; max-width: 500px; margin: 0 auto; }
+}
+
+/* Mobile Screens (Below 768px) */
+@media screen and (max-width: 768px) {
+    
+    /* Disable Custom Cursor on Touch Devices (It's annoying on phones) */
+    .cursor-dot, .cursor-outline { display: none; }
+    * { cursor: auto; }
+
+    /* Navbar Mobile Layout */
+    .glass-nav { padding: 15px 20px; }
+    .hamburger { display: block; color: var(--text-light); cursor: pointer; z-index: 1001; }
+    
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Hidden by default */
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+        border-left: 1px solid var(--gold);
+    }
+
+    .nav-links.nav-active { right: 0; /* Slide in */ }
+    
+    .btn-glow { display: none; /* Hide the big button on mobile header */ }
+
+    /* Hero Text Sizing */
+    #hero h1 { font-size: 2.5rem; }
+    .search-glass { flex-direction: column; margin-top: 20px; }
+    .input-group { 
+        border-right: none; 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+        padding: 15px 0; 
+        width: 100%;
+    }
+    .btn-search { width: 100%; border-radius: 10px; margin-top: 10px; }
+
+    /* Calculator Mobile */
+    .calc-grid { grid-template-columns: 1fr; gap: 30px; }
+    .glass-calc { padding: 30px 20px; }
+    .circle-result { width: 150px; height: 150px; margin: 0 auto; }
+    .circle-result h3 { font-size: 1.5rem; }
+    
+    /* Footer Stack */
+    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+    .footer-social { margin-left: 0; }
+}
+/* New Button Style for Property Cards */
+.btn-details {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer; /* Change to none if using custom cursor, but standard pointer is safer here */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-details:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+}

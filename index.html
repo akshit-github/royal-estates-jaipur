@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaipur Aki Estates | The Future of Living</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">ROYAL<span class="gold-text">ESTATES</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-item">Home</a></li>
+            <li><a href="#featured" class="nav-item">Collections</a></li>
+            <li><a href="#services" class="nav-item">Services</a></li>
+            <li><a href="#calculator" class="nav-item">Finance</a></li>
+        </ul>
+        <a href="#founder" class="btn-glow">Meet the Expert</a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <header id="hero">
+        <div class="video-overlay"></div>
+        <video autoplay muted loop playsinline class="bg-video" poster="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1920">
+            <source src="#" type="video/mp4">
+        </video>
+        
+        <div class="hero-content" data-aos="fade-up">
+            <div class="glass-panel">
+                <span class="tag">FUTURE REALTY JAIPUR</span>
+                <h1>Live in <br><span class="gradient-text">Masterpieces</span></h1>
+                <p>Curating the finest heritage and modern homes in Rajasthan.</p>
+                
+                <div class="search-glass">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Location (e.g. Vaishali)">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-home"></i>
+                        <select>
+                            <option>Property Type</option>
+                            <option>Villa</option>
+                            <option>Penthouse</option>
+                        </select>
+                    </div>
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+   <section id="founder" class="founder-section">
+        <div class="container split-layout">
+            <div class="founder-info" data-aos="fade-right">
+                <span class="subtitle">THE FOUNDER & OWNER</span>
+                <h2>Redefining Jaipur's <br> <span class="gradient-text">Skyline</span></h2>
+                <p>As the owner of Aki Estates, I don't just sell properties; I curate legacies. With a deep understanding of Jaipur's architectural heritage and modern needs, I ensure your investment is timeless.</p>
+                
+                <div class="stats-row">
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Years of Leadership</p>
+                    </div>
+                    <div class="stat">
+                        <h3>500Cr+</h3>
+                        <p>Portfolio Value</p>
+                    </div>
+                </div>
+                <button class="btn-glow">Book Owner Consultation</button>
+            </div>
+            
+            <div class="founder-visual" data-aos="zoom-in">
+                <div class="image-frame">
+                    <img src="images/owner.jpg" alt="Owner" class="founder-img">
+                    <div class="floating-badge">
+                        <i class="fas fa-crown"></i> Company Owner
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="featured" class="section-padding">
+        <div class="container">
+            <div class="header-flex">
+                <h2 class="section-heading">Curated <span class="gold-text">Residences</span></h2>
+                <div class="slider-nav">
+                    <button id="prevProp"><i class="fas fa-arrow-left"></i></button>
+                    <button id="nextProp"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="property-scroller" id="property-list"></div>
+        </div>
+    </section>
+
+     <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-right">Premium <span class="gold-text">Services</span></h2>
+            <div class="services-grid">
+                <div class="tilt-card" data-tilt>
+                    <div class="icon-box"><i class="fas fa-key"></i></div>
+                    <h3>Luxury Buying</h3>
+                    <p>Exclusive access to off-market listings in C-Scheme & Civil Lines.</p>
+                </div>
+                <div class="tilt-card" data-tilt>
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>Investment Analysis</h3>
+                    <p>Data-driven ROI predictions for the booming Jaipur market.</p>
+                </div>
+                <div class="tilt-card" data-tilt>
+                    <div class="icon-box"><i class="fas fa-file-signature"></i></div>
+                    <h3>Legal Assistance</h3>
+                    <p>Hassle-free paperwork and RERA verification handling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="calculator" class="calc-section">
+        <div class="container">
+            <div class="glass-calc" data-aos="flip-up">
+                <h2>Mortgage <span class="gold-text">Estimator</span></h2>
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <label>Property Price (₹)</label>
+                        <input type="range" min="5000000" max="100000000" value="25000000" class="range-slider" id="priceRange">
+                        <span id="priceValue" class="val-display">₹ 2.5 Cr</span>
+
+                        <label>Down Payment (%)</label>
+                        <input type="range" min="10" max="80" value="20" class="range-slider" id="dpRange">
+                        <span id="dpValue" class="val-display">20%</span>
+
+                        <label>Interest Rate (%)</label>
+                        <input type="range" min="6" max="12" step="0.1" value="8.5" class="range-slider" id="intRange">
+                        <span id="intValue" class="val-display">8.5%</span>
+                    </div>
+                    <div class="calc-result">
+                        <div class="circle-result">
+                            <span class="monthly-label">Monthly EMI</span>
+                            <h3 id="emiResult">₹ 0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2>ROYAL<span class="gold-text">ESTATES</span></h2>
+                <p>Jaipur, Rajasthan</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">Designed for the Future. 2025.</div>
+    </footer>
+    
+    <audio id="home-audio" src="sound.mp3" loop></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
